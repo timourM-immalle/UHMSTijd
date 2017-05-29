@@ -6,6 +6,13 @@ using System.Threading.Tasks;
 
 namespace SecondenNaarTijd
 {
+    struct UMSTijd
+    {
+        public int h;
+        public int m;
+        public int s;
+    }
+
     class Program
     {
         private static void SecNaarUrenMinutenSeconden(int totaalSeconden, out int uren, out int minuten, out int seconden)
