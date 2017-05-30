@@ -13,6 +13,31 @@ namespace SecondenNaarTijd
         public int s;   
     }
 
+    public class Tijd
+    {
+        private int uur;
+        private int min;
+        private int sec;
+        private int rest = 0;
+        
+        public Tijd(int aantalSec)
+        {
+            uur = aantalSec / 3600;
+            rest = aantalSec % 3600;
+            min = rest / 60;
+            sec = rest % 60;
+        }
+
+        public void ToonTijd()
+        {
+            Console.WriteLine("{0} u(u)r(en); {1} minu(u)t(en); {2} second(en)", uur, min, sec);
+        }
+
+        public int Uren { get { return uur; } }
+        public int Minuten { get { return min; } }
+        public int Seconden { get { return sec; } }
+    }
+
     class Program
     {
         private static void SecNaarUrenMinutenSeconden(int totaalSeconden, out int uren, out int minuten, out int seconden) //output-parameters vermijden: ze zijn lelijk
@@ -49,8 +74,11 @@ namespace SecondenNaarTijd
             //SecNaarUrenMinutenSeconden(61, out h, out m, out s);
             //Console.WriteLine("{0} hours; {1} minutes; {2} seconds", h, m, s);
 
-            var ums = SecNaarUMS(61);
+            UMSTijd ums = SecNaarUMS(61);
             Console.WriteLine("{0} u(u)r(en); {1} minu(u)t(en); {2} second(en)", ums.h, ums.m, ums.s);
+
+            Tijd uurMinuutSecond = new Tijd(61);
+            uurMinuutSecond.ToonTijd();
         }
     }
 }
